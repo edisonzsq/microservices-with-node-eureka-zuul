@@ -49,7 +49,7 @@ app.post("/buy", function (req, res) {
   let data = { action: "purchase", product: "apple", quantity: 1 };
   records.push(data);
   console.log("PURCHASE RECEIVED")
-  client.publish(subscription, JSON.stringify(data));
+  client.publish(channelName, JSON.stringify(data));
   console.log("PURCHASE PROCESS COMPLETED. BROADCAST MESSAGE FOR INVENTORY SERVICE.");
   return res.send(records);
 });
