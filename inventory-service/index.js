@@ -2,8 +2,6 @@ const express = require('express')
 const app = express()
 const port = 1040
 let bodyParser = require('body-parser');
-let ioProm  = require('express-socket.io');
-let server  = ioProm.init(app);
 
 let quantity = 0;
 
