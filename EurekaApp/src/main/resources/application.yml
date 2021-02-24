@@ -1,0 +1,8 @@
+server:
+  port: 1010
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    service-url: 
+      default-zone: http://localhost:1010/eureka

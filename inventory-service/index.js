@@ -5,7 +5,7 @@ let bodyParser = require('body-parser');
 let mqtt = require('mqtt')
 let client  = mqtt.connect('mqtt://test.mosquitto.org')
 const subscription = "SU-SD-45-WORKSHOP-"+"YOUR_NAME";
-let quantity = 0;
+let quantity = 100;
 
 client.on('connect', function(){
   console.log('inventory service connected to public mqtt broker');
@@ -17,8 +17,8 @@ client.on('connect', function(){
 client.on('message', (topic, msg) => {
   msg = msg.toString();
   console.log('purchase messsage received', topic);
-  quantity++;
-  console.log('quantity increased by 1. it is now', quantity);
+  quantity--;
+  console.log('quantity deducted by 1. it is now', quantity);
 });
 
 
