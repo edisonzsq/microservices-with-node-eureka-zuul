@@ -1,8 +1,15 @@
 const request = require('request');
 const ip = require('ip');
 
-const eurekaService = `http://localhost:1010/eureka`;
+const eurekaService = 'http://localhost:1010/eureka';
 
+/**
+ * This helper class registers this node instance to Service Discovery,
+ * and continues to send heartbeat signal at an interval.
+ * 
+ * In an actual production scenario, there should be additional step to
+ * re-connect to Service Discovery when not disconnected.
+ */
 module.exports = {
    registerWithEureka: (appName, port) => {
        console.log(`Registering ${appName} with Eureka`);
