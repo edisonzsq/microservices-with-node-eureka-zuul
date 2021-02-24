@@ -15,3 +15,5 @@ public class ZuulAppApplication {
 	}
 
 }
+
+// https://www.baeldung.com/zuul-load-balancing

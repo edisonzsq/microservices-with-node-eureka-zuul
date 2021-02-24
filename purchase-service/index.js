@@ -9,6 +9,8 @@ let bodyParser = require("body-parser");
 // This is a mocked records store for purchase and refund records.
 let records = [];
 
+// Generate unique ID for logging (to be passed across services)
+const uuid = require('uuid'); 
 
 /**
  * We are using a public broker for MQTT for inter-service communications via message queue.
@@ -46,9 +48,11 @@ require("./eureka-helper").registerWithEureka("purchaseservice", port);
  * whoever that subscribes to this channel will receive the message indicating a purchase order has been processed.
  */
 app.post("/buy", function (req, res) {
-  let data = { action: "purchase", product: "apple", quantity: 1 };
+  
+  let data = { action: "purchase", product: "apple", quantity: 1 , logId:uuid.v4()};
+  
   records.push(data);
-  console.log("PURCHASE RECEIVED")
+  console.log("PURCHASE RECEIVED. Log ID:",data.logId);
   client.publish(channelName, JSON.stringify(data));
   console.log("PURCHASE PROCESS COMPLETED. BROADCAST MESSAGE FOR INVENTORY SERVICE.");
   return res.send(records);

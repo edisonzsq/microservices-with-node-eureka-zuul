@@ -6,6 +6,7 @@ const app = express()
 const port = 1040
 let bodyParser = require('body-parser');
 
+
 // This ia a mock quantity store.
 let quantity = 100;
 
@@ -35,11 +36,11 @@ client.on('connect', function(){
 /**
  * MQTT client listening to incoming message from the subscribed channel.
  */
-client.on('message', (topic, msg) => {
-  msg = msg.toString();
+client.on('message', (topic, data) => {
+  data = JSON.parse(data.toString());
   console.log('BROADCAST MESSAGE RECEIVED. Topic:', topic);
   quantity--;
-  console.log('QUANTITY REDUCED BY 1. CURRENT QUANTITY:', quantity);
+  console.log('QUANTITY REDUCED BY 1. CURRENT QUANTITY:', quantity, 'Log ID:', data.logId);
 });
 
 /**
