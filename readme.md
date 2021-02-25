@@ -4,7 +4,6 @@
 
 This workshop requires 
 - Java 8
-- Maven
 - Node & NPM
 
 Before verifying each installation, re-open command line / terminal.
@@ -24,12 +23,6 @@ Verify if you have installed Java.
 java --version
 ```
 
-## Install Maven
-
-Follow this [link](https://maven.apache.org/install.html) to install maven. Verify installation with:
-```shell
-mvn --version
-```
 
 ## Install Node & NPM with Node Version Manager
 
